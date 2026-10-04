@@ -91,13 +91,34 @@ vim.pack.add({
      {src = "https://github.com/vague-theme/vague.nvim"},
      {src = "https://github.com/neovim/nvim-lspconfig"},
      {src = "https://github.com/mason-org/mason.nvim"},
-     {src = "https://github.com/lervag/vimtex", version = "v2.18"}
+     {src = "https://github.com/folke/snacks.nvim"},
+     {src = "https://github.com/lervag/vimtex", version = "v2.18"},
 })
+
 
 vim.cmd("colorscheme vague")
 
+-- Snacks
+require("snacks").setup({
+     picker = {enabled = true}
+})
+
+-- Mason
 require("mason").setup()
+
+-- Vimtex
+vim.g.vimtex_compiler_method = "latexmk"
+vim.g.vimtex_compiler_latexmk = {
+    options = {
+        "-lualatex",
+        "-verbose",
+        "-file-line-error",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+    },
+}
 
 -- Enable the LSP
 vim.lsp.enable({"lua_ls"})
 vim.lsp.enable({"pyright"})
+vim.lsp.enable({"clangd"})
