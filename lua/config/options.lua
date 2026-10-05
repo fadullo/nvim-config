@@ -93,6 +93,7 @@ vim.pack.add({
      {src = "https://github.com/mason-org/mason.nvim"},
      {src = "https://github.com/folke/snacks.nvim"},
      {src = "https://github.com/lervag/vimtex", version = "v2.18"},
+     {src = "https://github.com/vyfor/cord.nvim"},
 })
 
 
@@ -103,6 +104,14 @@ require("snacks").setup({
      picker = {enabled = true}
 })
 
+require("cord").setup({
+     idle = {
+          enabled = false,
+     },
+     display = {
+          theme = "minecraft"
+     },
+})
 -- Mason
 require("mason").setup()
 
